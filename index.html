@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tempo - Executive Time Intelligence</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <div>
+            <strong>Tempo</strong>
+            <span>Executive Time Intelligence</span>
+          </div>
+        </div>
+
+        <nav class="nav-list" aria-label="Views">
+          <button class="nav-item active" type="button" data-view="today">Today</button>
+          <button class="nav-item" type="button" data-view="week">Week</button>
+          <button class="nav-item" type="button" data-view="streams">Work Streams</button>
+          <button class="nav-item" type="button" data-view="coach">Coach</button>
+          <button class="nav-item" type="button" data-view="setup">Setup</button>
+          <button class="nav-item" type="button" data-view="privacy">Privacy</button>
+        </nav>
+
+        <section class="side-status" aria-label="System status">
+          <span>Reconstruction</span>
+          <strong id="coverageMetric">86%</strong>
+          <p>visible day captured</p>
+        </section>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow" id="dateLabel">Thursday, June 18</p>
+            <h1 id="pageTitle">Attention brief</h1>
+          </div>
+          <div class="topbar-actions">
+            <button class="secondary-action" type="button" id="resetDemo">Reset demo</button>
+            <button class="primary-action" type="button" id="prepareBrief">Prepare executive brief</button>
+          </div>
+        </header>
+
+        <section class="view active" id="todayView" aria-labelledby="todayTitle">
+          <section class="brief-panel">
+            <div class="brief-copy">
+              <p class="section-label">Daily narrative</p>
+              <h2 id="todayTitle">Operations expanded beyond plan, while strategy and leadership development remained visible.</h2>
+              <p id="dailyNarrative"></p>
+            </div>
+            <div class="alignment-block">
+              <span>Alignment</span>
+              <strong id="alignmentScore">72</strong>
+              <p id="alignmentText"></p>
+            </div>
+          </section>
+
+          <section class="measure-row" id="measureRow" aria-label="Daily measures"></section>
+
+          <div class="workspace-grid">
+            <section class="panel ledger-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="section-label">Ledger</p>
+                  <h2>Reconstructed day</h2>
+                </div>
+                <div class="range-control" aria-label="Timeline range">
+                  <button type="button" class="active" data-range="day">Day</button>
+                  <button type="button" data-range="week">Week</button>
+                  <button type="button" data-range="month">Month</button>
+                </div>
+              </div>
+              <div class="timeline" id="timeline"></div>
+            </section>
+
+            <aside class="side-stack">
+              <section class="panel">
+                <div class="panel-header compact">
+                  <div>
+                    <p class="section-label">Ingestion</p>
+                    <h2>Connect and simulate sources</h2>
+                  </div>
+                </div>
+                <div class="source-grid" id="sourceGrid"></div>
+                <form class="link-form" id="linkForm">
+                  <label>
+                    <span>Source type</span>
+                    <select id="sourceType">
+                      <option>Calendar</option>
+                      <option>Email</option>
+                      <option>Teams</option>
+                      <option>Document</option>
+                      <option>Phone</option>
+                      <option>Travel</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span>Reference</span>
+                    <input id="sourceReference" type="text" placeholder="Paste a URL, meeting ID, thread, or note" />
+                  </label>
+                  <button type="submit">Ingest source</button>
+                </form>
+              </section>
+
+              <section class="panel">
+                <div class="panel-header compact">
+                  <div>
+                    <p class="section-label">Voice</p>
+                    <h2>Capture reflection</h2>
+                  </div>
+                  <button class="record-button" type="button" id="recordToggle">Rec</button>
+                </div>
+                <textarea id="voiceNote" placeholder="Dictate decisions, action items, concerns, or observations."></textarea>
+                <div class="note-actions">
+                  <select id="noteTarget" aria-label="Attach note to activity"></select>
+                  <button type="button" id="attachNote">Attach</button>
+                </div>
+              </section>
+
+              <section class="panel">
+                <div class="panel-header compact">
+                  <div>
+                    <p class="section-label">Signals</p>
+                    <h2>Live insights</h2>
+                  </div>
+                </div>
+                <div class="insight-list" id="insightList"></div>
+              </section>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" id="weekView" aria-labelledby="weekTitle">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-label">Weekly intelligence</p>
+                <h2 id="weekTitle">Attention allocation and trends</h2>
+              </div>
+            </div>
+            <div class="weekly-layout">
+              <div class="allocation-grid" id="weeklyAllocation"></div>
+              <div class="trend-list" id="trendList"></div>
+            </div>
+          </section>
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-label">Relationships</p>
+                <h2>Direct report coverage</h2>
+              </div>
+            </div>
+            <div class="relationship-grid" id="relationshipGrid"></div>
+          </section>
+        </section>
+
+        <section class="view" id="streamsView" aria-labelledby="streamsTitle">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-label">Work streams</p>
+                <h2 id="streamsTitle">Clustered initiatives, projects, and decisions</h2>
+              </div>
+            </div>
+            <div class="stream-grid" id="streamGrid"></div>
+          </section>
+        </section>
+
+        <section class="view" id="coachView" aria-labelledby="coachTitle">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-label">Operating partner</p>
+                <h2 id="coachTitle">Recommended leadership moves</h2>
+              </div>
+            </div>
+            <div class="coach-list" id="coachList"></div>
+          </section>
+        </section>
+
+        <section class="view" id="setupView" aria-labelledby="setupTitle">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-label">First-run setup</p>
+                <h2 id="setupTitle">Teach Tempo your operating model</h2>
+              </div>
+            </div>
+            <form class="setup-grid" id="setupForm">
+              <label>
+                <span>Strategic priorities</span>
+                <textarea id="priorityInput"></textarea>
+              </label>
+              <label>
+                <span>Departments</span>
+                <textarea id="departmentInput"></textarea>
+              </label>
+              <label>
+                <span>Direct reports</span>
+                <textarea id="reportInput"></textarea>
+              </label>
+              <label>
+                <span>Preferred time categories</span>
+                <textarea id="categoryInput"></textarea>
+              </label>
+              <button type="submit">Save operating model</button>
+            </form>
+          </section>
+        </section>
+
+        <section class="view" id="privacyView" aria-labelledby="privacyTitle">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-label">Trust controls</p>
+                <h2 id="privacyTitle">Privacy, access, and audit trail</h2>
+              </div>
+            </div>
+            <div class="privacy-grid">
+              <div class="privacy-controls" id="privacyControls"></div>
+              <div class="audit-list" id="auditList"></div>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <dialog class="activity-dialog" id="activityDialog">
+      <form method="dialog" id="activityForm">
+        <div class="panel-header">
+          <div>
+            <p class="section-label">Manual correction</p>
+            <h2 id="dialogTitle">Correct activity</h2>
+          </div>
+          <button class="ghost-action" value="cancel" type="submit">Close</button>
+        </div>
+        <div class="dialog-grid">
+          <label>
+            <span>Category</span>
+            <select id="editCategory"></select>
+          </label>
+          <label>
+            <span>Initiative</span>
+            <input id="editInitiative" type="text" />
+          </label>
+          <label>
+            <span>Duration, minutes</span>
+            <input id="editMinutes" type="number" min="1" max="720" />
+          </label>
+          <label>
+            <span>Strategic priority</span>
+            <input id="editPriority" type="text" />
+          </label>
+          <label class="checkbox-row">
+            <input id="editPrivate" type="checkbox" />
+            <span>Mark private</span>
+          </label>
+          <label class="checkbox-row">
+            <input id="editExcluded" type="checkbox" />
+            <span>Exclude from analysis</span>
+          </label>
+        </div>
+        <menu class="dialog-actions">
+          <button class="secondary-action" type="button" id="splitActivity">Split</button>
+          <button class="secondary-action" type="button" id="mergeActivity">Merge adjacent</button>
+          <button class="primary-action" type="submit" value="default">Save correction</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
